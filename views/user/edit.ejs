@@ -1,9 +1,12 @@
 <%if(status === "Error") { %>
 <div class="alert alert-danger" role="alert"><%=statusDescription%></div>
 <% } else { %>
-<form role="form" action="/user/update" method="post">
 <img src="<%=user.imageUrl%>" alt="<%=user.firstName%> <%=user.lastName%>" class="img-circle" width="200px" height="auto">
-<form role="form">
+<form role="form"action="/user" method="post">
+    <!-- This line below is to support PUT HTTP method. Works only in Express JS Server. It's cool-->
+    
+    <input type="hidden" name="_method" value="put">
+    
   <div class="form-group">
     <label for="txtUserName">User name</label>
     <input type="text" class="form-control" name="userName" id="txtUserName" placeholder="User name" value="<%=user.userName%>">

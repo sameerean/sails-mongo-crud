@@ -67,5 +67,14 @@ module.exports = {
             _user.imageUrl = options.imageUrl;
             _user.role = options.role;
         }
+    },
+    removeUser: function(_userName) {
+        for(var _idx = 0; _idx < UserService.usersList.length; _idx++) {
+            var _current = UserService.usersList[_idx];
+            if(_current.userName === _userName) {
+                UserService.usersList.splice(_idx, 1);
+                break;
+            }
+        }
     }
 };

@@ -60,13 +60,17 @@ module.exports.routes = {
     controller: 'user',
     action: "find",
   },
-  'post /user/create': {
+  'post /user': {
     controller: 'user',
     action: "create",
   },
-  'post /user/update': {
+  'put /user': {
     controller: 'user',
     action: "update",
+  },
+  'delete /user': {
+    controller: 'user',
+    action: "delete",
   },
 
 };

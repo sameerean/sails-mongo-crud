@@ -5,7 +5,8 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Role</th>
-            <th>Image</th>
+            <th>Avatar</th>
+            <th>X</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,13 @@
             <td><%=_user.lastName%></td>
             <td><%=_user.role%></td>
             <td><img src="<%=_user.imageUrl%>" alt="<%=_user.firstName%> <%=_user.lastName%>" class="img-circle" width="50px" height="50px"></td>
+            <td>
+                <form action='user' method='post'>
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="userName" value="<%=_user.userName%>">
+                    <button type="submit" class="btn btn-danger">X</button>
+                </form>
+            </td>
         </tr>
         <%}%>
     </tbody>

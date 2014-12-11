@@ -10,6 +10,7 @@ module.exports = UserController = {
      * `UserController.create()`
      */
     create: function (req, res) {
+        console.log("Inside create..............");
         UserService.createUser({
             userName: req.param("userName"),
             firstName: req.param("firstName"),
@@ -24,6 +25,7 @@ module.exports = UserController = {
      * `UserController.update()`
      */
     update: function (req, res) {
+        console.log("Inside update..............");
         UserService.updateUser({
             userName: req.param("userName"),
             firstName: req.param("firstName"),
@@ -37,14 +39,16 @@ module.exports = UserController = {
      * `UserController.delete()`
      */
     delete: function (req, res) {
-        return res.json({
-            todo: 'delete() is not implemented yet!'
-        });
+        console.log("Inside delete..............");
+        UserService.removeUser(req.param("userName"));
+        
+        return res.redirect("user");
     },
     /**
      * `UserController.find()`
      */
     find: function (req, res) {
+        console.log("Inside find..............");
         var _userName = req.params.userName;
 
         var _user = UserService.findByUserName(_userName);
@@ -66,6 +70,7 @@ module.exports = UserController = {
      * `UserController.findall()`
      */
     findall: function (req, res) {
+        console.log("Inside findall..............");
         return res.view("user/list", {
             status: 'OK',
             title: 'List of users',
@@ -76,6 +81,7 @@ module.exports = UserController = {
      * `UserController.findall()`
      */
     new: function (req, res) {
+        console.log("Inside new..............");
         return res.view("user/new", {
             status: 'OK',
             title: 'Add a new user'
