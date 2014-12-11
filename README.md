@@ -1,3 +1,3 @@
 # sails-mongo-crud
 
-a [Sails](http://sailsjs.org) application
+A sample [Sails](http://sailsjs.org) application with basic MongoDB CRUD Operations
