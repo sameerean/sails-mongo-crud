@@ -71,7 +71,7 @@
           <ul class="nav nav-sidebar">
               <li<%if(req.url === '/') {%> class="active" <%}%>><a href="/">Overview<span class="sr-only">(current)</span></a></li>
             <li<%if(req.url === '/user') {%> class="active" <%}%>><a href="/user">Users List</a></li>
-            <li<%if(req.url === '/user/find') {%> class="active" <%}%>><a href="/user/find">Find a User</a></li>
+            <li<%if(req.url.indexOf('/user/') != -1 && req.url !== '/user/new') {%> class="active" <%}%>><a href="/user/find">Find a User</a></li>
             <li<%if(req.url === '/user/new') {%> class="active" <%}%>><a href="/user/new">New User</a></li>
           </ul>
         </div>
