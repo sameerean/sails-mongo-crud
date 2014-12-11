@@ -49,13 +49,24 @@ module.exports.routes = {
   ***************************************************************************/
   'get /user': {
     controller: 'user',
-    action: "find",
-//    view: 'user/list'
-  },
-  'get /user': {
-    controller: 'user',
     action: "findall",
 //    view: 'user/list'
-  }
+  },
+  'get /user/new': {
+    controller: 'user',
+    action: "new",
+  },
+  'get /user/:userName': {
+    controller: 'user',
+    action: "find",
+  },
+  'post /user/create': {
+    controller: 'user',
+    action: "create",
+  },
+  'post /user/update': {
+    controller: 'user',
+    action: "update",
+  },
 
 };

@@ -16,7 +16,6 @@ module.exports = {
     cry: function (req, res) {
         console.info("cry invoked");
         return res.json({title: "I am crying....."});
-//        return res.view("homepage");
     },
 };
 

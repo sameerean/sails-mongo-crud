@@ -5,6 +5,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Role</th>
+            <th>Image</th>
         </tr>
     </thead>
     <tbody>
@@ -14,10 +15,11 @@
         %>
         
         <tr>
-            <td><%=_user.userName%></td>
+            <td><a href="/user/<%=_user.userName%>"><%=_user.userName%></a></td>
             <td><%=_user.firstName%></td>
             <td><%=_user.lastName%></td>
             <td><%=_user.role%></td>
+            <td><img src="<%=_user.imageUrl%>" alt="<%=_user.firstName%> <%=_user.lastName%>" class="img-circle" width="50px" height="50px"></td>
         </tr>
         <%}%>
     </tbody>
