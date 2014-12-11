@@ -20,6 +20,6 @@ Try it out
 Screenshots
 ------------
 #####List of Users 
-![List of Users](https://raw.githubusercontent.com/sameerean/sails-mongo-crud/master/assets/images/docs/user-list.png)
+![List of Users](https://raw.githubusercontent.com/sameerean/sails-mongo-crud/master/assets/images/docs/user-list.png "List of Users")
 #####User Edit Screen 
-![User Edit Screen](https://raw.githubusercontent.com/sameerean/sails-mongo-crud/master/assets/images/docs/user-edit.png)
+![User Edit Screen](https://raw.githubusercontent.com/sameerean/sails-mongo-crud/master/assets/images/docs/user-edit.png "User Edit Screen")
