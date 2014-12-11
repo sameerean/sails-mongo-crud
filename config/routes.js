@@ -35,7 +35,7 @@ module.exports.routes = {
   '/': {
     controller: 'home',
     action: "default",
-    view: 'homepage'
+//    view: 'homepage'
   },
 
   /***************************************************************************
@@ -52,7 +52,7 @@ module.exports.routes = {
     action: "find",
 //    view: 'user/list'
   },
-  'get /user/findall': {
+  'get /user': {
     controller: 'user',
     action: "findall",
 //    view: 'user/list'
