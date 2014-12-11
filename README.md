@@ -9,10 +9,17 @@ A sample Sails JS web app that performs natural CRUD operations on a MongoDB col
 - Persisting data into a MongoDB.
 - Usage of a [Service](https://github.com/sameerean/sails-mongo-crud/blob/master/api/services/UserService.js) Class.
 
-Install
+Setup
 --------
 #####TODO
 
-How to run
+Try it out
 --------
 #####TODO
+
+Screenshots
+------------
+#####List of Users 
+![List of Users](https://raw.githubusercontent.com/sameerean/sails-mongo-crud/master/assets/images/docs/user-list.png)
+#####User Edit Screen 
+![User Edit Screen](https://raw.githubusercontent.com/sameerean/sails-mongo-crud/master/assets/images/docs/user-edit.png)
