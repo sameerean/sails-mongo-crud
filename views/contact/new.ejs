@@ -1,0 +1,39 @@
+<%if(status === "Error") { %>
+<div class="alert alert-danger" role="alert"><%=statusDescription%></div>
+<% } %>
+<form role="form"action="/contact" method="post">
+    <!-- This line below is to support PUT HTTP method. Works only in Express JS Server. It's cool-->
+    
+  <div class="form-group">
+    <label for="txtUserName">Public ID</label>
+    <input type="text" class="form-control" name="pid" id="txtPid" placeholder="Public ID" value="<%=contact.pid%>">
+  </div>
+  <div class="form-group">
+    <label for="txtFirstName">First Name</label>
+    <input type="text" class="form-control" name="firstName" id="txtFirstName" placeholder="First name" value="<%=contact.firstName%>">
+  </div>
+  <div class="form-group">
+    <label for="txtLastName">Last Name</label>
+    <input type="text" class="form-control" name="lastName" id="txtLastName" placeholder="Last name" value="<%=contact.lastName%>">
+  </div>
+  <div class="form-group">
+    <label for="txtLastName">Date of Birth</label>
+    <input type="text" class="form-control" name="dob" id="txtDob" placeholder="mm/dd/yyyy" value="<%=contact.dateOfBirth%>">
+  </div>
+  <div class="form-group">
+    <label for="txtProfileImageUrl">Email</label>
+    <input type="text" class="form-control" name="email" id="txtEmail" placeholder="email@company.com" value="<%=contact.email%>">
+  </div>
+  <div class="form-group">
+    <label for="txtProfileImageUrl">Phone Number</label>
+    <input type="text" class="form-control" name="phone" id="txtPhone" placeholder="Phone number" value="<%=contact.phone%>">
+  </div>
+  <div class="form-group">
+    <label for="txtProfileImageUrl">Profile Image URL</label>
+    <input type="text" class="form-control" name="imageUrl" id="txtProfileImageUrl" placeholder="Profile Image URL" value="<%=contact.profileImageUrl%>">
+  </div>
+    
+      <p></p>
+    
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

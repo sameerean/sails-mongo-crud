@@ -18,7 +18,16 @@ module.exports = UserController = {
             imageUrl: req.param("imageUrl"),
             role: req.param("role")
         });
-        
+                ContactService.createContact({
+            pid : "PID123",
+            firstName : "FirstName123",
+            lastName : "LastName123",
+            dateOfBirth : "8/02/1977",
+            email : "email123",
+            phone : "phone123",
+            profileImageUrl: "image123"
+        });
+
         return res.redirect("user");
     },
     /**

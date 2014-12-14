@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Public ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Avatar</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%
+        for(var _index=0; _index < contacts.length; _index++) {
+            var _contact = contacts[_index];
+        %>
+        
+        <tr>
+            <td><a href="/contact/<%=_contact.pid%>"><%=_contact.pid%></a></td>
+            <td><%=_contact.firstName%></td>
+            <td><%=_contact.lastName%></td>
+            <td><img src="<%=_contact.profileImageUrl%>" alt="<%=_contact.firstName%> <%=_contact.lastName%>" class="img-circle" width="50px" height="50px"></td>
+            <td>
+                <form action='contact' method='post'>
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="pid" value="<%=_contact.pid%>">
+                    <button type="submit" class="btn btn-danger">X</button>
+                </form>
+            </td>
+        </tr>
+        <%}%>
+    </tbody>
+</table>

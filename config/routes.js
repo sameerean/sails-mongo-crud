@@ -73,4 +73,36 @@ module.exports.routes = {
     action: "delete",
   },
 
+
+
+ 'get /contact': {
+    controller: 'contact',
+    action: "findall",
+//    view: 'user/list'
+  },
+  'get /contact/new': {
+    controller: 'contact',
+    action: "new",
+  },
+  'get /contact/find': {
+    controller: 'contact',
+    action: "showFind",
+  },
+  'get /contact/:pid': {
+    controller: 'contact',
+    action: "find",
+  },
+  'post /contact': {
+    controller: 'contact',
+    action: "create",
+  },
+  'put /contact': {
+    controller: 'contact',
+    action: "update",
+  },
+  'delete /contact': {
+    controller: 'contact',
+    action: "delete",
+  },
+
 };

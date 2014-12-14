@@ -74,6 +74,13 @@
             <li<%if(req.url.indexOf('/user/') != -1 && req.url !== '/user/new') {%> class="active" <%}%>><a href="/user/find">Find a User</a></li>
             <li<%if(req.url === '/user/new') {%> class="active" <%}%>><a href="/user/new">New User</a></li>
           </ul>
+
+          <ul class="nav nav-sidebar">
+            <li<%if(req.url === '/contact') {%> class="active" <%}%>><a href="/contact">Contacts List</a></li>
+            <li<%if(req.url.indexOf('/contact/') != -1 && req.url !== '/user/new') {%> class="active" <%}%>><a href="/contact/find">Find a Contact</a></li>
+            <li<%if(req.url === '/contact/new') {%> class="active" <%}%>><a href="/contact/new">New Contact</a></li>
+          </ul>
+            
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header"><%=title%></h1>
