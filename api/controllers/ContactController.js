@@ -11,20 +11,20 @@ module.exports = {
      */
     create: function (req, res) {
         console.log("Inside create..............req.params = " + JSON.stringify(req.params.all()));
-        
+
         var _newContact = {
-            pid : req.param("pid"),
-            firstName : req.param("firstName"),
-            lastName : req.param("lastName"),
-            dateOfBirth : new Date(req.param("dob")),
-            email : req.param("email"),
-            phone : req.param("phone"),
+            pid: req.param("pid"),
+            firstName: req.param("firstName"),
+            lastName: req.param("lastName"),
+            dateOfBirth: new Date(req.param("dob")),
+            email: req.param("email"),
+            phone: req.param("phone"),
             profileImageUrl: req.param("imageUrl")
         };
-        return Contact.create(_newContact).then(function(_contact) {
+        return Contact.create(_newContact).then(function (_contact) {
             console.log("Contact created: " + JSON.stringify(_contact));
             return res.redirect("contact");
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.error("Error on ContactService.createContact");
             console.error(err);
             console.error(JSON.stringify(err));
@@ -35,29 +35,29 @@ module.exports = {
                 title: 'Add a new contact'
             });
         });
-        
+
     },
     /**
      * `ContactController.update()`
      */
     update: function (req, res) {
         console.log("Inside update..............");
-        
+
         return Contact.update({pid: req.param("pid")}, {
-            firstName : req.param("firstName"),
-            lastName : req.param("lastName"),
-            dateOfBirth : new Date(req.param("dob")),
-            email : req.param("email"),
-            phone : req.param("phone"),
+            firstName: req.param("firstName"),
+            lastName: req.param("lastName"),
+            dateOfBirth: new Date(req.param("dob")),
+            email: req.param("email"),
+            phone: req.param("phone"),
             profileImageUrl: req.param("imageUrl")
-        }).then(function(_contact) {
+        }).then(function (_contact) {
             return res.redirect("contact");
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.error("Error on ContactService.updateContact");
             console.error(err);
-            
-            return Contact.find().where({pid: req.param("pid")}).then(function(_contact) {
-                if(_contact && _contact.length > 0) {
+
+            return Contact.find().where({pid: req.param("pid")}).then(function (_contact) {
+                if (_contact && _contact.length > 0) {
                     return res.view("contact/edit", {
                         contact: _contact[0],
                         status: 'Error',
@@ -68,11 +68,11 @@ module.exports = {
                 } else {
                     return res.view('500', {message: "Sorry, no Contact found with pid - " + req.param("pid")});
                 }
-            }).catch(function(err) {
+            }).catch(function (err) {
                 return res.view('500', {message: "Sorry, no Contact found with pid - " + req.param("pid")});
             });
         });
-        
+
     },
     /**
      * `ContactController.delete()`
@@ -106,18 +106,18 @@ module.exports = {
         console.log("Inside find..............");
         var _pid = req.params.pid;
         console.log("Inside find.............. _pid = " + _pid);
-        
-        return Contact.find().where({pid: _pid}).then(function(_contact) {
-            
-            if(_contact && _contact.length > 0) {
-            console.log("Inside find Found .... _contact = " + JSON.stringify(_contact));
+
+        return Contact.find().where({pid: _pid}).then(function (_contact) {
+
+            if (_contact && _contact.length > 0) {
+                console.log("Inside find Found .... _contact = " + JSON.stringify(_contact));
                 return res.view("contact/edit", {
                     status: 'OK',
                     title: 'Contact Details',
                     contact: _contact[0]
                 });
             } else {
-            console.log("Inside find NOT Found .... ");
+                console.log("Inside find NOT Found .... ");
                 return res.view("contact/edit", {
                     status: 'Error',
                     errorType: 'not-found',
@@ -125,7 +125,7 @@ module.exports = {
                     title: 'Contact Details'
                 });
             }
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log("Inside find ERROR .... ");
             return res.view("contact/edit", {
                 status: 'Error',
@@ -146,7 +146,7 @@ module.exports = {
             console.log("ContactService.findAll -- contacts = " + contacts);
             return res.view("contact/list", {
                 status: 'OK',
-                title: 'List of contact',
+                title: 'List of contacts',
                 contacts: contacts
             });
         }).catch(function (err) {
@@ -158,7 +158,7 @@ module.exports = {
     /**
      * `ContactController.findall()`
      */
-    new: function (req, res) {
+    new : function (req, res) {
         console.log("Inside new..............");
         return res.view("contact/new", {
             contact: {
@@ -174,13 +174,16 @@ module.exports = {
             title: 'Add a new contact'
         });
     },
-    
-    showFind: function(req, res) {
+    showFind: function (req, res) {
         console.log("Inside showFind..............");
         res.view("contact/find", {
             title: "Search contacts"
         });
+    },
+    resetData: function (req, res) {
+        ContactService.preloadData();
+        return res.redirect("contact");
     }
-	
+
 };
 

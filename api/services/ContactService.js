@@ -1,80 +1,21 @@
-//var Contact = require('../models/Contact.js');
+var contactsRepo = require('../../init-data/contacts.js');
+//import contactsList from '/init-data/contacts';
 
 module.exports = {
-    
-//    findAll: function () {
-//        return Contact.find().then(function(contacts) {
-//            console.log("ContactService.findAll -- contacts = " + contacts);
-//            return contacts;
-//        }).catch(function(err) {
-//            console.error("Error on ContactService.findAll");
-//            console.error(err);
-//        });
-//    },
-    findByPid: function (_pid) {
-        return Contact.find().where({pid: _pid}).then(function(contact) {
-            return contact;
-        }).catch(function(err) {
-            console.error("Error on ContactService.findByPid");
-            console.error(err);
-        });
-    },
-    createContact: function(options) {
-        
-        Contact.create({
-            pid : options.pid,
-            firstName : options.firstName,
-            lastName : options.lastName,
-            dateOfBirth : options.dateOfBirth,
-            email : options.email,
-            phone : options.phone,
-            profileImageUrl: options.profileImageUrl
-        }).then(function(_contact) {
-            console.log("Contact created: " + JSON.stringify(_contact));
-        }).catch(function(err) {
-            console.error("Error on ContactService.createContact");
-            console.error(err);
-        });
-        
-        /*
-        new Contact({
-            pid : options.pid,
-            firstName : options.firstName,
-            lastName : options.lastName,
-            dateOfBirth : options.dateOfBirth,
-            email : options.email,
-            phone : options.phone,
-            profileImageUrl: options.profileImageUrl
-        }).save().then(function(_contact) {
-            console.log("Contact created: " + _contact);
-        }).catch(function(err) {
-            console.error("Error on ContactService.createContact");
-            console.error(err);
-        });
-        */
+    preloadData: function () {
+        console.log(">>>>>>>>>>>>>>> preloading data.......");
+        for (var _idx = 0; _idx < contactsRepo.contactList.length; _idx++) {
 
-    },
-    updateContact: function(_pid, options) {
-        Contact.update({pid: _pid}, {
-            firstName : options.firstName,
-            lastName : options.lastName,
-            dateOfBirth : options.dateOfBirth,
-            email : options.email,
-            phone : options.phone,
-            profileImageUrl: options.profileImageUrl
-        }).then(function(_contact) {
-            console.log("Contact updated: " + _contact);
-        }).catch(function(err) {
-            console.error("Error on ContactService.updateContact");
-            console.error(err);
-        });
-    },
-    removeContact: function(_pid) {
-        ContactService.findByPid(_pid).destroy().then(function(_contact) {
-            console.log("Contact removed: " + _contact);
-        }).catch(function(err) {
-            console.error("Error on ContactService.removeContact");
-            console.error(err);
-        });
+            var __contact = contactsRepo.contactList[_idx];
+            console.log(">>>>>>>>>>>>>>>>>>>> " + JSON.stringify(__contact));
+
+            Contact.findOrCreate({pid: __contact.pid}, __contact).then(function (_contact) {
+                console.log("Contact created: " + JSON.stringify(_contact));
+            }).catch(function (err) {
+                console.error("Error on ContactService.preloadData");
+                console.error(err);
+                console.error(JSON.stringify(err));
+            });
+        }
     }
 };
